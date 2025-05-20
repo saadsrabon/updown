@@ -15,8 +15,16 @@ server.listen(app.config.port, () => {
 }
 app.handleRequest = (req, res) => {
     // Handle incoming requests
-   
-    res.end('Hello, World!');
+    // console.log(`Received request for ${req.url}`);
+    // res.end('Hello, World!');
+    // You can add more logic here to handle different routes or methods
+    if (req.method === 'GET' && req.url === '/about') {
+        
+        res.end('Hello, from the about page!');
+    }
+
+    
+
 };
 
 app.createServer();
