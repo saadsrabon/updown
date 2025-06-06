@@ -16,12 +16,20 @@ app.createServer = () => {
 app.handleRequest = (req, res) => {
   //parse url
   const parsesdUrl = url.parse(req.url, true);
-  //path
   //query
+  const query = parsesdUrl.query;
+  //path
+  const path = parsesdUrl.pathname;
+  const trimPath = path.replace(/^\/+|\/+$/g, "");
+
+  console.log(trimPath);
+
   //method 
   //headers 
   //body
   // decoder for buffer data
+  console.log(query);
+  res.end('hello world');
 };
 
 app.createServer();
