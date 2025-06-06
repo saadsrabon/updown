@@ -1,5 +1,6 @@
 // Dependecies
 const http = require("http");
+const { StringDecoder } = require("string_decoder");
 const url = require("url");
 // app scafold
 const app = {};
@@ -21,15 +22,23 @@ app.handleRequest = (req, res) => {
   //path
   const path = parsesdUrl.pathname;
   const trimPath = path.replace(/^\/+|\/+$/g, "");
-
-  console.log(trimPath);
-
-  //method 
+  //method
+  const method = req.method.toLowerCase(); 
   //headers 
+  const headers = req.headers;
   //body
   // decoder for buffer data
-  console.log(query);
-  res.end('hello world');
+  const decoder = new StringDecoder('utf-8');
+  let buffer = '';
+  req.on('data', (data) => {
+    buffer += decoder.write(data);
+  })
+  req.on('end', () => {
+    buffer += decoder.end();
+    console.log(buffer);
+    res.end('hello world');
+  })
+
 };
 
 app.createServer();
