@@ -1,5 +1,6 @@
 // Dependecies
 const http = require("http");
+const url = require("url");
 // app scafold
 const app = {};
 app.config = {
@@ -14,6 +15,7 @@ app.createServer = () => {
 };
 app.handleRequest = (req, res) => {
   //parse url
+  const parsesdUrl = url.parse(req.url, true);
   //path
   //query
   //method 
