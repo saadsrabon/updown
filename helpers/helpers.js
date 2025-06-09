@@ -1,7 +1,7 @@
 const { StringDecoder } = require("string_decoder");
 const url = require("url");
-const routes = require("./routes");
-const {notFound} = require("./handlers/routehandlers/notfound");
+const routes = require("../routes");
+const {notFound} = require("../handlers/routehandlers/notfound");
 const helpers = {};
 
 helpers.handlers = (req, res) => {
